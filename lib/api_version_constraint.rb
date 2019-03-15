@@ -7,6 +7,6 @@ class ApiVersionConstraint
     # pega a requisição, vai verificar no cabeçalho acccept se tem o conteúdo do include (futuramente descobriremos o que é)
     # os defaults era para verificar a versão defaults
     def matches?(req)
-        @default || req.headers['Accept'].include?("application/vnd.pprojetofase8.v#{@version}")
+        @default || req.headers['Accept'].include?("application/vnd.projetofase8.v#{@version}")
     end
 end
