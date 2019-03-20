@@ -4,7 +4,7 @@ RSpec.describe 'Users API', type: :request do
     #Cria o Usuário
     let!(:user) {create(:user)}
     let(:user_id) {user.id}
-    let(:headers) {{"Accept" => "application/vnd.projetofase8.v1"}}
+    let(:headers) {{"Accept" => "application/vnd.projetofase8.v1", "Authoorization" => user.auth_token}}
     
     #Define Host
     before {host! "localhost:3000/api"} 
