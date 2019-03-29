@@ -4,7 +4,8 @@ RSpec.describe 'Users API', type: :request do
     #Cria o Usuário
     let!(:user) {create(:user)}
     let(:user_id) {user.id}
-    let(:headers) {{"Accept" => "application/vnd.projetofase8.v1", "Authoorization" => user.auth_token}}
+    let(:headers) {{"Accept" => "application/vnd.projetofase8.v1", "Authorization" =>user.auth_token
+        }}
     
     #Define Host
     before {host! "localhost:3000/api"} 
@@ -74,8 +75,8 @@ RSpec.describe 'Users API', type: :request do
         #Quando as requisições são validas, retorna o Código 201
         context "when the request params are valid" do
             let(:user_params){{ email: 'novo@email.com'}}
-            #retorna o código 201
-            it "returns status code 201" do
+            #retorna o código 200
+            it "returns status code 200" do
                 expect(response).to have_http_status(200)
             end
             
