@@ -19,9 +19,7 @@ class Api::V1::ExpensesController < ApplicationController
             render json: expense, status: 201
         else
             render json: {errors: expense.errors}, status: 422
-
-        gains = current_user.gains
-        render json: {gains: gains}, status: 200
+        end
     end
     
     def update
