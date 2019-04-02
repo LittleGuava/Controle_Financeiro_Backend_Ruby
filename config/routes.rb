@@ -11,5 +11,12 @@ Rails.application.routes.draw do
            resources :gains
            resources :expenses
         end
+        namespace :v2, path:"/", constraints: ApiVersionConstraint.new(version: 2
+        , default: true) do
+           resources :users
+           resources :sessions
+           resources :gains
+           resources :expenses
+        end
     end
 end
