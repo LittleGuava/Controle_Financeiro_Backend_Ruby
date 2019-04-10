@@ -3,7 +3,7 @@ class Api::V2::GainsController < ApplicationController
     
     def index
         gains = current_user.gains
-        render json: {gains: gains}, status: 200
+        render json: gain, status: 200
     end
     
     def show
@@ -38,7 +38,7 @@ class Api::V2::GainsController < ApplicationController
     private
     
     def gain_params
-        params.require(:gain).permit(gain: [:description, :value, :date])
+        params.require(:gain).permit(:description, :value, :date)
     end
     
 end
