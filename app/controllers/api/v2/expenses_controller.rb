@@ -4,7 +4,7 @@ class Api::V2::ExpensesController < ApplicationController
     
     def index
 
-        expenses = current_user.expenses
+        expenses = current_user.expenses.ransack(params[:q]).result
         render json: expense, status: 200
     end
     
