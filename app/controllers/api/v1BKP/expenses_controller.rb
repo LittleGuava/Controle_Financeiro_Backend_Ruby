@@ -1,11 +1,11 @@
-class Api::V2::ExpensesController < ApplicationController
+class Api::V1::ExpensesController < ApplicationController
     
     before_action :authenticate_with_token!
     
     def index
 
         expenses = current_user.expenses
-        render json: expense, status: 200
+        render json: {expenses: expenses}, status: 200
     end
     
     def show
