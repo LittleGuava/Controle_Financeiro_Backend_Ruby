@@ -1,12 +1,11 @@
-class Api::V1::UsersController < Api::V1::BaseController
+class Api::V2::UsersController < Api::V2::BaseController
     before_action :authenticate_with_token!, only:[:update, :destroy]
-    respond_to :json
     
     def show
         begin
-            #Cria a variavel, recebe o usuario e respondde ele
-            @user = User.find(params[:id])
-            respond_with @user
+            #Cria a variavel, recebe o usuario e responde ele
+            user = User.find(params[:id])
+            render json: user, status: 200
         rescue
             # Caso dê errado vem o erro 404
             head 404
