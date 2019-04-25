@@ -8,6 +8,10 @@ class Api::V2::ExpenseSerializer < ActiveModel::Serializer
     def date_to_br
         I18n.l(object.date, format: :databr) if object.date.present?
     end
+    #teste
     
+    
+    
+    #dsadasdsd
     belongs_to :user
 end
