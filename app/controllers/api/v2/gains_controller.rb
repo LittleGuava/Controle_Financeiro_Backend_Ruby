@@ -1,9 +1,10 @@
 class Api::V2::GainsController < Api::V2::BaseController
+    
     before_action :authenticate_user!
     
     def index
         gains = current_user.gains.ransack(params[:q]).result
-        render json: gain, status: 200
+        render json: gains, status: 200
     end
     
     def show
@@ -16,7 +17,7 @@ class Api::V2::GainsController < Api::V2::BaseController
         if gain.save
             render json: gain, status: 201
         else
-            render json: {errors: gain.errors}, status: 422
+            render json: { errors: gain.errors}, status: 422
         end
     end
     

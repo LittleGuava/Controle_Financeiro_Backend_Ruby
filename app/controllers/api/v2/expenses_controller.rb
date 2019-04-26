@@ -3,9 +3,8 @@ class Api::V2::ExpensesController < Api::V2::BaseController
     before_action :authenticate_user!
     
     def index
-
         expenses = current_user.expenses.ransack(params[:q]).result
-        render json: expense, status: 200
+        render json: expenses, status: 200
     end
     
     def show
@@ -23,20 +22,19 @@ class Api::V2::ExpensesController < Api::V2::BaseController
     end
     
     def update
-
         expense = current_user.expenses.find(params[:id])
         if expense.update_attributes(expense_params)
             render json: expense, status: 200
         else
-            render json: {errors: expense errors}, status: 422
+            render json: { errors: expense.errors}, status: 422
         end
     end
     
     def destroy
-
         expense = current_user.expenses.find(params[:id])
         expense.destroy
         head 204
+    end
     
     private
         
