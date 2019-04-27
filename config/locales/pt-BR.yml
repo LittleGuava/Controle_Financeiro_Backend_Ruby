@@ -2,4 +2,4 @@
 pt-BR:
     time:
         formats:
-            databr: "%d/%m/%Y"
+            databr: "%d/%m/%y"
