@@ -3,6 +3,7 @@ class Api::V1::ExpensesController < Api::V1::BaseController
     before_action :authenticate_with_token!
     
     def index
+<<<<<<< HEAD
 
         expenses = current_user.expenses
         render json: {expenses: expenses}, status: 200
