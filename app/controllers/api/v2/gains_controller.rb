@@ -23,7 +23,7 @@ class Api::V2::GainsController < Api::V2::BaseController
     
     def update
         gain = current_user.gains.find(params[:id])
-        if gain.update_attributes(gain_params)
+        if gain.update(gain_params)
             render json: gain, status: 200
         else
             render json: {errors: gain.errors}, status: 422

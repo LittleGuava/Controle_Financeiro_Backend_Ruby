@@ -23,7 +23,7 @@ class Api::V2::ExpensesController < Api::V2::BaseController
     
     def update
         expense = current_user.expenses.find(params[:id])
-        if expense.update_attributes(expense_params)
+        if expense.update(expense_params)
             render json: expense, status: 200
         else
             render json: { errors: expense.errors}, status: 422
