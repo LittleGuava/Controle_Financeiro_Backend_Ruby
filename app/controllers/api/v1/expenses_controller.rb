@@ -3,7 +3,6 @@ class Api::V1::ExpensesController < Api::V1::BaseController
     before_action :authenticate_with_token!
     
     def index
-<<<<<<< HEAD
 
         expenses = current_user.expenses
         render json: {expenses: expenses}, status: 200
@@ -26,10 +25,10 @@ class Api::V1::ExpensesController < Api::V1::BaseController
     def update
 
         expense = current_user.expenses.find(params[:id])
-        if expense.update_attributes(expense_params)
+        if expense.update(expense_params)
             render json: expense, status: 200
         else
-            render json: {errors: expense errors}, status: 422
+            render json: {errors: expense.errors}, status: 422
         end
     end
     
@@ -38,6 +37,7 @@ class Api::V1::ExpensesController < Api::V1::BaseController
         expense = current_user.expenses.find(params[:id])
         expense.destroy
         head 204
+    end
     
     private
         
