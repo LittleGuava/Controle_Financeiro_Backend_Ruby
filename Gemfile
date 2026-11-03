@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby file: '.ruby-version'
+ruby '~> 3.3.0'
 
 gem 'rails', '~> 7.2.3', '>= 7.2.3.1'
 # Use Puma as the app server
@@ -11,7 +11,7 @@ gem 'rack-cors', '~> 2.0'
 
 group :development, :test do
   gem 'mysql2', '~> 0.5'
-  gem 'debug', platforms: %i[mri windows]
+  gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
   gem 'rspec-rails', '~> 7.1'
   gem 'bundler-audit', require: false
 end

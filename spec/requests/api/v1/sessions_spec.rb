@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Sessions API v1', type: :request do
     let!(:user) { create(:user) }
+    let!(:old_token) { user.auth_token }
     let(:headers) { { "Accept" => "application/vnd.projetofase8.v1" } }
 
     before { host! "localhost:3000/api" }
@@ -20,6 +21,7 @@ RSpec.describe 'Sessions API v1', type: :request do
 
             it "returns the user with a new auth token" do
                 expect(json_body["auth_token"]).to eq(user.reload.auth_token)
+                expect(json_body["auth_token"]).not_to eq(old_token)
             end
         end
 
