@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2019_06_14_144305) do
+ActiveRecord::Schema[7.2].define(version: 2026_11_03_180000) do
   create_table "expenses", id: :integer, charset: "utf8", force: :cascade do |t|
     t.string "description"
     t.float "value"

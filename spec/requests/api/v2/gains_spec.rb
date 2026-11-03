@@ -35,11 +35,11 @@ RSpec.describe 'Gains API v2', type: :request do
         let!(:first) { user.gains.create!(description: "Salario", value: 1500, date: Date.new(2026, 10, 1)) }
         let!(:second) { user.gains.create!(description: "Freela", value: 300) }
 
-        it "returns every gain sorted by id" do
-            get "/gains", params: { q: { description_cont: "", s: "id ASC" } }, headers: headers
+        it "returns every gain sorted by id descending" do
+            get "/gains", params: { q: { description_cont: "", s: "id DESC" } }, headers: headers
 
             expect(response).to have_http_status(200)
-            expect(json_body["data"].map { |g| g["id"] }).to eq([first.id.to_s, second.id.to_s])
+            expect(json_body["data"].map { |g| g["id"] }).to eq([second.id.to_s, first.id.to_s])
         end
 
         it "filters by description" do
